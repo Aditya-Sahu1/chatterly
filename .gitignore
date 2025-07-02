@@ -1,0 +1,34 @@
+# Android Studio / Gradle
+*.iml
+.gradle/
+build/
+app/build/
+captures/
+.externalNativeBuild/
+.cxx/
+.idea/
+.idea/caches
+.idea/libraries
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+local.properties
+*.apk
+*.aar
+*.log
+*.class
+*.dex
+*.jar
+gen/
+bin/
+output/
+
+# Node.js (in case any backend or scripts appear here)
+node_modules/
+*.env
+logs/
+
+# macOS / Windows
+.DS_Store
+Thumbs.db

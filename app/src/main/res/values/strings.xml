@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Chat App</string>
+    <string name="name">Name</string>
+    <string name="this_is_sent_message">This is sent Message</string>
+    <string name="this_is_received_message">this_is_received_message</string>
+    <string name="type_a_message">Type a message</string>
+</resources>

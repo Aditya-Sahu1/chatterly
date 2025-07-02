@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.AppCompat.ChatApp" parent="android:Theme.WithActionBar" />
+<!--    <style name="Theme.AppCompat.ChatApp" parent="android:Theme.Material.Light.DarkActionBar" />-->
+</resources>

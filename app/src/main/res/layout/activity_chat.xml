@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChatActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ChatRecyclerView"
+        android:layout_above="@id/LinearLayout"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_height="wrap_content"
+        />
+    <LinearLayout
+    android:id="@+id/LinearLayout"
+    android:layout_alignParentBottom="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+        android:layout_marginBottom="5dp"
+    android:weightSum="180">
+
+    <EditText
+        android:id="@+id/messageBox"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@drawable/edt_background"
+        android:backgroundTint="#F6F7FF"
+        android:textSize="25sp"
+        android:paddingStart="10dp"
+        android:hint="@string/type_a_message"
+        android:text=""
+        android:layout_marginStart="10dp"
+    android:layout_weight="150"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/sent_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="5dp"
+            android:layout_weight="30"
+            android:src="@drawable/sent_button_2" />
+    </LinearLayout>
+</RelativeLayout>
