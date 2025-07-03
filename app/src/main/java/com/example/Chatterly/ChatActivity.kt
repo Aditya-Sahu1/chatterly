@@ -16,6 +16,10 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import java.util.TimeZone
 
 class ChatActivity : AppCompatActivity() {
 
@@ -66,6 +70,8 @@ class ChatActivity : AppCompatActivity() {
         sendButton.setOnClickListener{
             val msg=messageBox.text.toString().trim()
             if(msg != "") {
+                messageBox.text = ""
+
                 val messageObject = sendMessageRequest(msg,receiverId!!,false)
 
                 var sentmessage=retrofitBuilder.sendMessage(messageObject)
@@ -75,18 +81,21 @@ class ChatActivity : AppCompatActivity() {
                         response: Response<sendMessageResponse?>
                     ) {
                         val resBody=response.body();
-                        if(resBody!=null && resBody.success){
+                        if(resBody==null){
+                            Toast.makeText(this@ChatActivity,"Server error occured$resBody",Toast.LENGTH_LONG).show()
+                            return ;
+                        }
+                        if( resBody.success){
 //                       if(response.body()!!.success){
                            Toast.makeText(this@ChatActivity,resBody.msg,Toast.LENGTH_LONG).show()
 //                           updateMessages()
                            messageList.add(response.body()!!.message)
                            mesageAdapter.notifyItemInserted(messageList.size-1)
                            chatRecylceriew.scrollToPosition(messageList.size-1)
-                           messageBox.text = ""
 
                        }
                         else{
-                            Toast.makeText(this@ChatActivity,response.body()!!.msg,Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@ChatActivity,resBody.msg,Toast.LENGTH_LONG).show()
                        }
                     }
 
@@ -98,6 +107,58 @@ class ChatActivity : AppCompatActivity() {
             }
         }
     }
+
+
+    override fun onStart() {
+        super.onStart()
+        val socket=Sockethandler.getSocket()
+        socket.on("receive_message") { args ->
+            if (args[0] != null) {
+                val data = args[0] as org.json.JSONObject
+                val senderID = data.getString("senderId")
+                val newMessage = data.getJSONObject("newMessage")
+                val messageText = newMessage.getString("message")
+                val senderId = newMessage.getString("senderId")
+                val isImage = newMessage.optBoolean("isImage", false)
+                val roomId = newMessage.getString("roomId")
+
+
+                val timestampString = data.getString("timestamp")
+                val dateFormat =
+                    SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.getDefault())
+                dateFormat.timeZone = TimeZone.getTimeZone("UTC")
+//                val timestamp = dateFormat.parse(timestampString)
+                val timestamp = try {
+                    dateFormat.parse(timestampString)
+                } catch (e: Exception) {
+                    Date() // or return/skip
+                }
+
+
+
+                runOnUiThread {
+                    val msg = MessageResponse(
+                        isImage = isImage,
+                        message = messageText,
+                        senderId = senderId,
+                        roomId = roomId,
+                        timestamp = timestamp!!
+                    )
+
+
+                    messageList.add(msg)
+                    mesageAdapter.notifyItemInserted(messageList.size - 1)
+                    chatRecylceriew.scrollToPosition(messageList.size - 1)
+
+                }
+            }
+        }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        Sockethandler.getSocket().off("receive_message")
+    }
+
 
     private fun updateMessages() {
 

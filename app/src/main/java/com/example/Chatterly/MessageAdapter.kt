@@ -9,8 +9,7 @@ import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
 import androidx.compose.runtime.currentCompositionErrors
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
+
 import java.util.ArrayList
 
 class MessageAdapter(val context:Context,val messageList:ArrayList<MessageResponse>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {

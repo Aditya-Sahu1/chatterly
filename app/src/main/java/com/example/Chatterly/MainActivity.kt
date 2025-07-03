@@ -32,12 +32,16 @@ class MainActivity : ComponentActivity() {
         val sharedPref = getSharedPreferences("chat_app", MODE_PRIVATE)
         val token = sharedPref.getString("token", null)
 
+
+
         if (token != null) {
+
            startActivity(Intent(this,HomePage::class.java))
+            finish()
         } else {
             // Redirect to login
             startActivity(Intent(this,LoginActivity::class.java))
-
+            finish()
         }
 
     }
