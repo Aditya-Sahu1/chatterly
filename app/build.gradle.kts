@@ -1,15 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
+
     namespace = "com.example.chatapp"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.chatapp"
+//        applicationId ="com.adityasahu.chatterly"
+        applicationId ="com.example.chatterly"
+
+//        applicationId = "com.example.chatapp"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -64,8 +67,6 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.firebase.auth)
-    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -76,4 +77,7 @@ dependencies {
     implementation(libs.circleimageview)
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("io.socket:socket.io-client:2.0.0") {
+        exclude(group = "org.json", module = "json")
+    }
 }

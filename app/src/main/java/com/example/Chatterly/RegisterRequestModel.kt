@@ -1,4 +1,4 @@
-package com.example.chatapp
+package com.example.Chatterly
 
 data class RegisterRequestModel(
     val email: String,

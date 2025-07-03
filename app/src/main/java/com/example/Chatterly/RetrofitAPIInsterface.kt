@@ -1,10 +1,9 @@
-package com.example.chatapp
+package com.example.Chatterly
 
 import AllUsersResponse
 import okhttp3.Interceptor
 import retrofit2.Call
 import retrofit2.http.Body
-import okhttp3.Response
 
 import retrofit2.http.GET
 import retrofit2.http.POST

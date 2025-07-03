@@ -1,4 +1,4 @@
-package com.example.chatapp
+package com.example.Chatterly
 
 import android.os.Bundle
 import android.widget.ImageView
@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chatapp.R
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback

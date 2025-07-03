@@ -1,4 +1,4 @@
-package com.example.chatapp
+package com.example.Chatterly
 
 class Message {
     var message:String?=null

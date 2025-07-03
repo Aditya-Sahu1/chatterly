@@ -1,4 +1,4 @@
-package com.example.chatapp
+package com.example.Chatterly
 
 import android.util.Log
 import io.socket.client.IO

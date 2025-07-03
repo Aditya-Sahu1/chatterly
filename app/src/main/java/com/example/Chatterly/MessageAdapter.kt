@@ -1,4 +1,4 @@
-package com.example.chatapp
+package com.example.Chatterly
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity.MODE_PRIVATE
-import androidx.compose.runtime.currentCompositionErrors
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.chatapp.R
 
 import java.util.ArrayList
 

@@ -1,6 +1,5 @@
-package com.example.chatapp
+package com.example.Chatterly
 
-import User
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.chatapp.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
